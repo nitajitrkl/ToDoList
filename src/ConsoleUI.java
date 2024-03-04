@@ -35,6 +35,10 @@ public class ConsoleUI {
     }
 
     public void displayTasks() {
+        if (taskManager.getTaskCount() == 0){
+            System.out.println("No Tasks Found!!!");
+            return;
+        }
         System.out.println(ANSI_BOLD + "Tasks:" + ANSI_RESET);
         for (Task task : taskManager.getTasks()) {
             if (task.isDone()) {
