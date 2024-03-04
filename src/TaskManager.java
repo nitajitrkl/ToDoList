@@ -56,9 +56,7 @@ public class TaskManager {
             tasks = (List<Task>) ois.readObject();
         } catch (FileNotFoundException e) {
             System.out.println("No saved tasks found.");
-        } catch (IOException e) {
-            System.out.println("Error loading tasks: " + e.getMessage());
-        } catch (ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             System.out.println("Error loading tasks: " + e.getMessage());
         }
     }

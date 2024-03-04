@@ -2,10 +2,6 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 public class ConsoleUI {
-    private TaskManager taskManager;
-    private Scanner scanner;
-
-    // Define ANSI escape codes for text colors
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLACK = "\u001B[30m";
     public static final String ANSI_RED = "\u001B[31m";
@@ -15,8 +11,6 @@ public class ConsoleUI {
     public static final String ANSI_PURPLE = "\u001B[35m";
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_WHITE = "\u001B[37m";
-
-    // Define ANSI escape codes for text styles
     public static final String ANSI_BOLD = "\u001B[1m";
     public static final String ANSI_UNDERLINE = "\u001B[4m";
 
@@ -68,7 +62,7 @@ public class ConsoleUI {
     public void removeTask() {
         System.out.print(ANSI_BOLD + ANSI_RED + "Enter the index of the task to remove: " + ANSI_RESET);
         int index = Integer.parseInt(scanner.nextLine());
-        taskManager.removeTask(index);
+        taskManager.removeTask(index+1);
         System.out.println(ANSI_GREEN + "Task removed." + ANSI_RESET);
         TaskFileHandler.saveTasks(taskManager.getTasks());
     }
@@ -76,7 +70,7 @@ public class ConsoleUI {
     public void markTaskAsDone() {
         System.out.print(ANSI_BOLD + ANSI_YELLOW + "Enter the index of the task to mark as done: " + ANSI_RESET);
         int index = Integer.parseInt(scanner.nextLine());
-        taskManager.markTaskAsDone(index);
+        taskManager.markTaskAsDone(index+1);
         System.out.println(ANSI_GREEN + "Task marked as done." + ANSI_RESET);
         TaskFileHandler.saveTasks(taskManager.getTasks());
     }
@@ -84,7 +78,7 @@ public class ConsoleUI {
     public void markTaskAsNotDone() {
         System.out.print(ANSI_BOLD + ANSI_YELLOW + "Enter the index of the task to mark as not done: " + ANSI_RESET);
         int index = Integer.parseInt(scanner.nextLine());
-        taskManager.markTaskAsNotDone(index);
+        taskManager.markTaskAsNotDone(index+1);
         System.out.println(ANSI_GREEN + "Task marked as not done." + ANSI_RESET);
         TaskFileHandler.saveTasks(taskManager.getTasks());
     }
@@ -92,7 +86,7 @@ public class ConsoleUI {
     public void displayTaskDetails() {
         System.out.print(ANSI_BOLD + ANSI_YELLOW + "Enter the index of the task to display details for: " + ANSI_RESET);
         int index = Integer.parseInt(scanner.nextLine());
-        Task task = taskManager.getTask(index);
+        Task task = taskManager.getTask(index+1);
         if (task != null) {
             System.out.println(ANSI_BOLD + "Task Details:" + ANSI_RESET);
             System.out.println(ANSI_YELLOW + "Name: " + ANSI_RESET + task.getName());
@@ -103,4 +97,6 @@ public class ConsoleUI {
             System.out.println(ANSI_RED + "Invalid index." + ANSI_RESET);
         }
     }
+    private final TaskManager taskManager;
+    private final Scanner scanner;
 }
