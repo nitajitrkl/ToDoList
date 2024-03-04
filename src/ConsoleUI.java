@@ -62,7 +62,7 @@ public class ConsoleUI {
     public void removeTask() {
         System.out.print(ANSI_BOLD + ANSI_RED + "Enter the index of the task to remove: " + ANSI_RESET);
         int index = Integer.parseInt(scanner.nextLine());
-        taskManager.removeTask(index+1);
+        taskManager.removeTask(index-1);
         System.out.println(ANSI_GREEN + "Task removed." + ANSI_RESET);
         TaskFileHandler.saveTasks(taskManager.getTasks());
     }
@@ -70,7 +70,7 @@ public class ConsoleUI {
     public void markTaskAsDone() {
         System.out.print(ANSI_BOLD + ANSI_YELLOW + "Enter the index of the task to mark as done: " + ANSI_RESET);
         int index = Integer.parseInt(scanner.nextLine());
-        taskManager.markTaskAsDone(index+1);
+        taskManager.markTaskAsDone(index-1);
         System.out.println(ANSI_GREEN + "Task marked as done." + ANSI_RESET);
         TaskFileHandler.saveTasks(taskManager.getTasks());
     }
@@ -78,7 +78,7 @@ public class ConsoleUI {
     public void markTaskAsNotDone() {
         System.out.print(ANSI_BOLD + ANSI_YELLOW + "Enter the index of the task to mark as not done: " + ANSI_RESET);
         int index = Integer.parseInt(scanner.nextLine());
-        taskManager.markTaskAsNotDone(index+1);
+        taskManager.markTaskAsNotDone(index-1);
         System.out.println(ANSI_GREEN + "Task marked as not done." + ANSI_RESET);
         TaskFileHandler.saveTasks(taskManager.getTasks());
     }
@@ -86,7 +86,7 @@ public class ConsoleUI {
     public void displayTaskDetails() {
         System.out.print(ANSI_BOLD + ANSI_YELLOW + "Enter the index of the task to display details for: " + ANSI_RESET);
         int index = Integer.parseInt(scanner.nextLine());
-        Task task = taskManager.getTask(index+1);
+        Task task = taskManager.getTask(index-1);
         if (task != null) {
             System.out.println(ANSI_BOLD + "Task Details:" + ANSI_RESET);
             System.out.println(ANSI_YELLOW + "Name: " + ANSI_RESET + task.getName());
